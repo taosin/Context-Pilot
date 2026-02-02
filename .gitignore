@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build output
+out/
+dist/
+*.tsbuildinfo
+
+# VS Code
+.vscode-test/
+*.vsix
+
+# IDE / Editor
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Test / Coverage
+coverage/
+.nyc_output/
+
+# Optional: 本地覆盖的项目配置（若需提交团队配置则勿忽略）
+# .contextpilotrc

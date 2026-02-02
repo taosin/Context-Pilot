@@ -1,0 +1,107 @@
+{
+  "name": "context-pilot",
+  "displayName": "Context Pilot",
+  "description": "AI上下文感知强化插件 - 为AI编程助手提供精准、结构化的代码上下文",
+  "version": "0.1.0",
+  "publisher": "context-pilot",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/.contextpilotrc",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "contextPilot.analyzeContext",
+        "title": "Context Pilot: 分析当前上下文"
+      },
+      {
+        "command": "contextPilot.showPreview",
+        "title": "Context Pilot: 显示上下文预览"
+      },
+      {
+        "command": "contextPilot.generateSummary",
+        "title": "Context Pilot: 生成任务摘要"
+      }
+    ],
+    "configuration": {
+      "title": "Context Pilot",
+      "properties": {
+        "contextPilot.context.maxTotalTokens": {
+          "type": "number",
+          "default": 4000,
+          "description": "上下文最大 token 总数"
+        },
+        "contextPilot.context.layers.core.maxTokens": {
+          "type": "number",
+          "default": 2000,
+          "description": "核心层最大 token 数"
+        },
+        "contextPilot.context.layers.important.maxTokens": {
+          "type": "number",
+          "default": 1500,
+          "description": "重要层最大 token 数"
+        },
+        "contextPilot.context.layers.reference.maxTokens": {
+          "type": "number",
+          "default": 500,
+          "description": "参考层最大 token 数"
+        },
+        "contextPilot.analysis.enableGitHistory": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用 Git 历史分析"
+        },
+        "contextPilot.analysis.historyLookbackDays": {
+          "type": "number",
+          "default": 30,
+          "description": "Git 历史回溯天数"
+        },
+        "contextPilot.analysis.enableSemanticAnalysis": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用语义相似度分析"
+        },
+        "contextPilot.analysis.similarityThreshold": {
+          "type": "number",
+          "default": 0.7,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "语义相似度阈值"
+        },
+        "contextPilot.cache.maxMemoryItems": {
+          "type": "number",
+          "default": 50,
+          "description": "内存缓存最大条目数 (LRU)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "test": "npm run compile && node ./out/test/runTest.js",
+    "test:unit": "npm run compile && mocha out/test/unit/**/*.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.0",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.55.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "typescript": "^5.3.0",
+    "mocha": "^10.2.0"
+  },
+  "dependencies": {}
+}

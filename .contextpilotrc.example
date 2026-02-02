@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "context": {
+    "maxTotalTokens": 4000,
+    "layers": {
+      "core": { "maxTokens": 2000, "required": true },
+      "important": { "maxTokens": 1500, "required": false },
+      "reference": { "maxTokens": 500, "required": false }
+    }
+  },
+  "analysis": {
+    "enableGitHistory": true,
+    "historyLookbackDays": 30,
+    "enableSemanticAnalysis": true,
+    "similarityThreshold": 0.7
+  },
+  "integrations": {
+    "copilot": { "enabled": true, "autoInject": true },
+    "rag": { "enabled": false, "indexOnSave": false }
+  }
+}
